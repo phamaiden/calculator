@@ -1,0 +1,17 @@
+.calculator {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.calc-container {
+    display: grid;
+    /* width: 400px; */
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+.display {
+    grid-column: 1 / -1;
+    text-align: end;
+}
+#zero {
+    grid-column: span 2;
+}
