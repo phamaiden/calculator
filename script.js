@@ -16,20 +16,7 @@ function operate(operator, a, b) {
     let res = 0;
     let x = parseFloat(a);
     let y = parseFloat(b);
-    // switch (operator){
-    //     case '+':
-    //         res = x + y;
-    //     case '-':
-    //         res = x - y;
-    //     case '*':
-    //         res = x * y;
-    //     case '/':
-    //         if (y === 0) {
-    //             return 'error';
-    //         } else {
-    //             res = x / y;
-    //         }
-    //}
+
     if (operator === '+') {
         res = x+y;
     } else if (operator === '-') {
@@ -68,34 +55,21 @@ function addDigit(digit) {
     updateDisplay();
 }
 
+// Operator function
 function addOperator(op) {
-    // if (displayValue) {
-    //     firstNumber = displayValue;
-    //     operator = op;
-    //     console.log(firstNumber);
-    // } else if (firstNumber && displayValue){
-        
-    // } else if (!displayValue || !firstNumber) {
-    //     // don't do anything if first number hasn't been entered
-    // } else if (displayValue === secondNumber) {
-    //     equals();
-    // }
-    if (displayValue && operator) {
+    if (displayValue && operator) { // If operator button is clicked again
         equals();
         operator = op;
     }
-    if (displayValue) { 
+    if (displayValue) {
         operator = op;
-        if (!firstNumber) {
+        if (!firstNumber) { // Display value is present but firstNumber hasn't been assigned yet
             firstNumber = displayValue;
         } 
-        // if (firstNumber && operator) {
-        //     secondNumber = displayValue;
-        //     equals();
-        // }
     } 
 }
 
+// Equals function
 function equals() {
     if (displayValue && !secondNumber) {
         secondNumber = displayValue;
@@ -105,8 +79,33 @@ function equals() {
     updateDisplay();
 }
 
-function clear() {
+// Clear function
+const clear = document.querySelector('.clear').addEventListener('click', () => {
     operator = firstNumber = secondNumber = undefined;
     displayValue = '0';
+    updateDisplay();
+})
+
+// Change sign function
+function negative(num) {
+    displayValue = (num  * -1).toString();
+    updateDisplay();
+}
+
+// Convert percentage to number
+function percent(num) {
+    displayValue = (num/100).toString();
+    updateDisplay();
+}
+
+// Input decimal
+function decimal() {
+    if (displayValue === firstNumber || displayValue == secondNumber) {
+        displayValue = '0';
+        displayValue += '.';
+    }
+    else if (!displayValue.includes('.')) {
+        displayValue += '.';
+    } 
     updateDisplay();
 }

@@ -10,9 +10,9 @@
     <div class="calculator">
         <div class="calc-container">
             <div class="display"></div>
-            <button class="clear" onclick="clear()">AC</button>
-            <button class="sign">+/-</button>
-            <button class="percent">%</button>
+            <button class="clear">AC</button>
+            <button class="sign" onclick="negative(displayValue)">+/-</button>
+            <button class="percent" onclick="percent(displayValue)">%</button>
             <button class="operator" onclick="addOperator('/')">/</button>
             <button class="operand" onclick="addDigit('7')">7</button>
             <button class="operand" onclick="addDigit('8')">8</button>
@@ -27,7 +27,7 @@
             <button class="operand" onclick="addDigit('3')">3</button>
             <button class="operator" onclick="addOperator('+')">+</button>
             <button id="zero" class="operand" onclick="addDigit('0')">0</button>
-            <button class="decimal">.</button>
+            <button class="decimal" onclick="decimal()">.</button>
             <button class="equals" onclick="equals()">=</button>
         </div>
     </div>
